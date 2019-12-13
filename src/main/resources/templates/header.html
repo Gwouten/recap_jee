@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:fragment="header(page)" class="section">
+
+    <nav class="nav">
+        <ul>
+            <li>
+                <a th:href="@{~/index}" th:class="${(page == 'index')?'nav\_\_link nav\_\_link--current':'nav\_\_link'}">Derdehands.be</a>
+            </li>
+            <li>
+                <a th:href="@{~/new}" th:class="${(page == 'new')?'nav\_\_link nav\_\_link--current':'nav\_\_link'}">New</a>
+            </li>
+            <li>
+                <a th:href="@{~/about}" th:class="${(page == 'about')?'nav\_\_link nav\_\_link--current':'nav\_\_link'}">About</a>
+            </li>
+        </ul>
+    </nav>
+
+</div>
+
+</body>
+</html>
