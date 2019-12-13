@@ -10,7 +10,11 @@
 
 <div th:replace="~{header :: header(index)}"></div>
 
-<h1>Add item</h1>
+<div class="container" th:object="${productDetail}">
+
+<h1 th:text="*{naam}"></h1>
+
+</div>
 
 <div th:replace="~{footer :: footer}"></div>
 

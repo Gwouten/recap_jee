@@ -9,7 +9,51 @@
 
 <div th:replace="~{header :: header(index)}"></div>
 
-<h1>Add item</h1>
+<div class="container">
+    <h1>Zet iets te koop</h1>
+
+    <div class="section">
+        <form th:action="@{~/add}" method="POST" th:object="${nProduct}" class="form">
+
+<!--            NAAM-->
+            <div class="input">
+                <label class="form__label" for="naam">Naam</label>
+                <input class="form__input-text" id="naam" type="text" th:field="*{naam}">
+            </div>
+
+<!--            USERNAME-->
+            <div class="input">
+                <label class="form__label" for="user">Naam</label>
+                <input class="form__input-text" id="user" type="text" th:field="*{username}">
+            </div>
+
+<!--            EMAIL-->
+            <div class="input">
+                <label class="form__label" for="email">Naam</label>
+                <input class="form__input-text" id="email" type="email" th:field="*{email}">
+            </div>
+
+<!--            STARTPRIJS-->
+            <div class="input">
+                <label class="form__label" for="prijs">Naam</label>
+                <input class="form__input-text" id="prijs" type="email" th:field="*{startprijs}">
+            </div>
+
+<!--            OMSCHRIJVING-->
+            <div class="input">
+                <label class="form__label" for="omschrijving">Naam</label>
+                <textarea class="form__input-text form__input-text--area" id="omschrijving" th:field="*{omschrijving}"></textarea>
+            </div>
+
+<!--            SUBMIT-->
+            <div class="input">
+                <input type="submit" value="Zet te koop">
+            </div>
+
+        </form>
+    </div>
+
+</div>
 
 <div th:replace="~{footer :: footer}"></div>
 
