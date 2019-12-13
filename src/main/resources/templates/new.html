@@ -7,41 +7,55 @@
 </head>
 <body>
 
-<div th:replace="~{header :: header(index)}"></div>
+<div th:replace="~{header :: header(new)}"></div>
 
 <div class="container">
     <h1>Zet iets te koop</h1>
 
     <div class="section">
-        <form th:action="@{~/add}" method="POST" th:object="${nProduct}" class="form">
+        <form th:action="@{~/add}" method="POST" th:object="${newProduct}" class="form">
 
 <!--            NAAM-->
             <div class="input">
+                <div class="error" th:if="${#fields.hasErrors('naam')}">
+                    <p class="error__text" th:errors="*{naam}"></p>
+                </div>
                 <label class="form__label" for="naam">Naam</label>
                 <input class="form__input-text" id="naam" type="text" th:field="*{naam}">
             </div>
 
 <!--            USERNAME-->
             <div class="input">
-                <label class="form__label" for="user">Naam</label>
+                <div class="error" th:if="${#fields.hasErrors('username')}">
+                    <p class="error__text" th:errors="*{username}"></p>
+                </div>
+                <label class="form__label" for="user">Gebruiker</label>
                 <input class="form__input-text" id="user" type="text" th:field="*{username}">
             </div>
 
 <!--            EMAIL-->
             <div class="input">
-                <label class="form__label" for="email">Naam</label>
+                <div class="error" th:if="${#fields.hasErrors('email')}">
+                    <p class="error__text" th:errors="*{email}"></p>
+                </div>
+                <label class="form__label" for="email">Email</label>
                 <input class="form__input-text" id="email" type="email" th:field="*{email}">
             </div>
 
 <!--            STARTPRIJS-->
             <div class="input">
-                <label class="form__label" for="prijs">Naam</label>
-                <input class="form__input-text" id="prijs" type="email" th:field="*{startprijs}">
+                <div class="error" th:if="${#fields.hasErrors('startprijs')}">
+                    <p class="error__text" th:errors="*{startprijs}"></p>
+                </div>
+                <label class="form__label" for="prijs">Prijs</label>
+                <input class="form__input-text" id="prijs" type="text" th:field="*{startprijs}">
             </div>
 
 <!--            OMSCHRIJVING-->
             <div class="input">
-                <label class="form__label" for="omschrijving">Naam</label>
+                <div class="error" th:if="${#fields.hasErrors('omschrijving')}">
+                    <p class="error__text" th:errors="*{omschrijving}"></p>
+                </div>
                 <textarea class="form__input-text form__input-text--area" id="omschrijving" th:field="*{omschrijving}"></textarea>
             </div>
 

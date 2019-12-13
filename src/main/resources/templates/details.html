@@ -8,11 +8,18 @@
 </head>
 <body>
 
-<div th:replace="~{header :: header(index)}"></div>
+<div th:replace="~{header :: header(details)}"></div>
 
 <div class="container" th:object="${productDetail}">
 
-<h1 th:text="*{naam}"></h1>
+    <h1 th:text="*{naam}"></h1>
+
+    <p class="prod__seller" th:text="*{username}"></p>
+    <a class="btn" th:href="|mailto:*{email}|">Contacteer verkoper</a>
+    <p class="prod__price" th:text="|€*{startprijs}|"></p>
+    <p class="prod__desc" th:text="*{omschrijving}"></p>
+
+    <a th:href="@{~/index}" class="btn">Naar overzicht</a>
 
 </div>
 

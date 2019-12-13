@@ -4,6 +4,7 @@ import deloof.wouter.recap_jee.model.Product;
 import deloof.wouter.recap_jee.model.ProductDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,15 +18,24 @@ public class AddController {
     @Autowired
     ProductDAO dao;
 
-    @ModelAttribute("nProduct")
+    @ModelAttribute("newProduct")
     public Product addNewProduct() {
         return new Product();
     }
 
+    //Ga naar âgina en maak een lege modelmap aan om de gegevens uit bovenstaande modelAttribute te halen
+    @RequestMapping( value = "/new", method = RequestMethod.GET)
+    public String showNew(ModelMap map) {
+        return "new";
+    }
+
     @RequestMapping( value = "/add", method = RequestMethod.POST)
-    public String showNew(@ModelAttribute(name = "nProduct") @Valid Product product, BindingResult br) {
+    public String saveNew(@ModelAttribute("newProduct") @Valid Product product, BindingResult br) {
+        System.out.println(br);
+        if(br.hasErrors()){
+            return "new";
+        }
         dao.save(product);
         return "redirect:/index";
     }
-
 }
